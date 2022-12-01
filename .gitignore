@@ -1,0 +1,20 @@
+# Distribution / packaging
+lib/
+lib64/
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+pyvenv.cfg
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+
+# App Data
+uploads/
+
+# Environments
+chatbubble/.env

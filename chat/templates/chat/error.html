@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block page_title %}
+    Error
+{% endblock %}
+
+{% block content %}
+<div id="error-container">
+    {% include 'chat/includes/header.html' %}
+    <div id="error-message">
+        <h1>{{ error_message }}</h1>
+        <h5>{{ sub_error }}</h5>
+        <a href="{% url 'index' %}"><button>Return</button></a>
+    </div>
+    {% include 'chat/includes/copyright.html' %}
+</div>
+{% endblock %}

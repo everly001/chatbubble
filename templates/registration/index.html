@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block page_title %}
+    Chatbubble
+{% endblock %}
+
+{% block content %}
+    <section id="login-section">
+        {% include 'chat/includes/header.html' %}
+        <div id="login-form">
+            <div id="header-text">
+                <h1>Welcome back!</h1>
+                <h5>Enter your details to login.</h5>
+            </div>
+            <form method="post">
+                {% csrf_token %}
+                {% for field in form %}
+                    {{ field }}
+                {% endfor %}
+                <a href="{% url 'password_reset' %}" class="subtext"><div><img id="questionmark" src="{% static 'media/question.png' %}" alt="?">Forgot password?</div></a>
+                <input type="submit" value="Sign In" id="submit">
+                {{ form.errors }}
+            </form>
+            <a id="signup-link" href="{% url 'signup' %}" class="subtext">Don't have an account? Sign up here!</a>
+        </div>
+        {% include 'chat/includes/copyright.html' %}
+    </section>
+    <div id="image-section">
+        <img src="{% static 'media/image2.png' %}" alt="Chatbubble interface">
+    </div>
+{% endblock %}

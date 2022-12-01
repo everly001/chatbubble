@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block page_title %}
+    Sign Up
+{% endblock %}
+
+{% block content %}
+    <section id="form-page">
+        {% include 'chat/includes/header.html' %}
+        <div id="signup-form">
+            <div id="header-text">
+                <h1>Welcome!</h1>
+                <h5>Fill in the form below to sign up.</h5>
+            </div>
+            <form method="POST">
+                {% csrf_token %}
+                {% for field in form %}
+                    {{ field }}
+                {% endfor %}
+                <input type="submit" value="Sign Up" id="submit">
+                {{ form.errors }}
+            </form>
+        </div>
+        {% include 'chat/includes/copyright.html' %}
+    </section>
+{% endblock %}

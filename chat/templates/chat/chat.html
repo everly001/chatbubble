@@ -1,0 +1,150 @@
+{% extends 'chat/app.html' %}
+
+{% load static %}
+
+{% block chat_screen %}
+    <div id="chat-screen">
+        <div id="messages">
+            {% for message in messages %}
+                {% if message.sender == request.user %}
+                    <div id="sent-message">
+                        <div id="chat-bubble-wrapper">
+                            <h5>You</h5>
+                            <div id="chat-bubble">
+                                <p>{{ message.message }}</p>
+                                {% include 'chat/includes/media.html' %}
+                            </div>
+                        </div>
+                        <div id="profile-picture-group">
+                            <div class="profile-picture"><img src="{{ message.sender.userprofile.profile_picture.url }}" alt=""></div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div id="received-message">
+                        <div id="profile-picture-group">
+                            <div class="profile-picture"><img src="{{ message.sender.userprofile.profile_picture.url }}" alt=""></div>
+                        </div>
+                        <div id="chat-bubble-wrapper">
+                            <h5>{{ message.sender }}</h5>
+                            <div id="chat-bubble">
+                                <p>{{ message.message }}</p>
+                                {% include 'chat/includes/media.html' %}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div id="chat-bar">
+            <input type="text" id="text-input" placeholder="Type your message here...">
+            <label for="media-upload"><img src="{% static 'media/file-upload.png' %}" alt=""></label>
+            <input type="file" id="media-upload">
+            <p id='result' style="display: none;"></p>
+            <button id="send-button"><div><img src="{% static 'media/send.png' %}" alt=""><h5>Send</h5></div></button>
+        </div>
+    </div>
+{% endblock %}
+
+{% block chat_members %}
+    <div id="chat-members">
+        <h3>Chat Members</h3>
+        <div id="members-list">
+            <div id="member">
+                <div id="profile-picture-group">
+                    <div class="profile-picture"><img id="profile-image" src="{{ user.userprofile.profile_picture.url }}" alt="Cookie Monster"></div>
+                </div>
+                <div id="member-name">
+                    <h4>{{ user }}</h4>
+                </div>
+            </div>
+            <div id="member">
+                <div id="profile-picture-group">
+                    <div class="profile-picture"><img id="profile-image" src="{{ request.user.userprofile.profile_picture.url }}" alt="Cookie Monster"></div>
+                </div>
+                <div id="member-name">
+                    <h4>You</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block media_grid %}
+    <div id="media">
+        <h3>Media</h3>
+        <div id="grid">
+                <div class="grid-item" id="one">
+                    {% if media_messages|slice:":1" %}
+                        {% for item in media_messages|slice:":1" %}
+                            <img id="grid-image" src="{{ item.media.url }}" alt="">
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="grid-item" id="two">
+                    {% if media_messages|slice:"1:2" %}
+                        {% for item in media_messages|slice:"1:2" %}
+                            <img id="grid-image" src="{{ item.media.url }}" alt="">
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="grid-item" id="three">
+                    {% if media_messages|slice:"2:3" %}
+                        {% for item in media_messages|slice:"2:3" %}
+                            <img id="grid-image" src="{{ item.media.url }}" alt="">
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="grid-item" id="four">
+                    {% if media_messages|slice:"3:4" %}
+                        {% for item in media_messages|slice:"3:4" %}
+                            <img id="grid-image" src="{{ item.media.url }}" alt="">
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="grid-item" id="five">
+                    {% if media_messages|slice:"4:5" %}
+                        {% for item in media_messages|slice:"4:5" %}
+                            <img id="grid-image" src="{{ item.media.url }}" alt="">
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="grid-item" id="six">
+                    {% if media_messages|slice:"5:6" %}
+                        {% for item in media_messages|slice:"5:6" %}
+                            <img id="grid-image" src="{{ item.media.url }}" alt="">
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="grid-item" id="seven">
+                    {% if media_messages|slice:"6:7" %}
+                        {% for item in media_messages|slice:"6:7" %}
+                            <img id="grid-image" src="{{ item.media.url }}" alt="">
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="grid-item" id="eight">
+                    {% if media_messages|slice:"7:8" %}
+                        {% for item in media_messages|slice:"7:8" %}
+                            <img id="grid-image" src="{{ item.media.url }}" alt="">
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="grid-item" id="nine">
+                    {% if media_messages.count > 9 %}
+                        <h5>+{{ media_messages.count|add:"-8" }}</h5>
+                    {% else %}
+                        {% if media_messages|slice:"8:9" %}
+                            {% for item in media_messages|slice:"8:9" %}
+                                <img src="{{ item.media.url }}" alt="">
+                            {% endfor %}
+                        {% endif %}
+                    {% endif %}
+                </div>
+        </div>
+    </div>
+    {{ user.id|json_script:"json-username" }}
+    {{ request.user.username|json_script:"json-message-username" }}
+{% endblock %}
+{% block javascript %}
+<script src="{% static 'javascript/chat.js' %}"></script>
+{% endblock %}

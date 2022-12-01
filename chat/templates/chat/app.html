@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block page_title %}
+    Chatbubble
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <section id="app-menu">
+            <nav>
+                <li><a href="{% url 'index' %}"><img src="{% static 'media/home.png' %}" alt=""></a></li>
+                <div>
+                    <li id="settings-button"><img src="{% static 'media/settings.png' %}" alt=""></li>
+                    <li><a href="{% url 'logout' %}"><img src="{% static 'media/sign-out.png' %}" alt=""></a></li>
+                </div>
+            </nav>
+        </section>
+        <section id="search-chat-bar">
+            <div>
+                <form id="search">
+                    <input type="text" name="Search Field" id="search-field" onkeyup="search()" placeholder="Search">
+                    <img type="image" id="search-button" src="{% static 'media/search.png' %}">
+                </form>
+            </div>
+            <div id="chats">
+                <div id="chats-text">
+                    <h3>Chats</h3>
+                    <a id="new-chat-open"><img id="new-chat" src="{% static 'media/new-chat.png' %}" alt="New Chat"></a>
+                </div>
+                <div id="chats-wrapper">
+                    {% for name, last_message, unread_messages in conversations %}
+                        <div class="chat-item">
+                            <div id="profile-picture-group">
+                                <div class="profile-picture"><img src="{{ name.userprofile.profile_picture.url }}" alt="Cookie Monster"></div>
+                                {% if name.userprofile.last_seen %}
+                                    <div style="background-color: #B6E492 !important;" id="online"></div>
+                                {% else %}
+                                    <div id="online"></div>
+                                {% endif %}
+                            </div>
+                            <div id="column-2">
+                                <a href="{% url 'chat' username=name %}"><h4>{{ name }}</h4></a>
+                                <p class="subtext">{{ last_message }}</p>
+                            </div>
+                            <div id="column-3">
+                                <p class="time">{{ last_message.timestamp|date:"d M" }}</p>
+                                {% if unread_messages > 0 %}
+                                    <div><p class="message-count">{{ unread_messages }}</p></div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        <section id="chat-section">
+            {% if conversation_chosen == True %}
+                {% block chat_screen %}
+                {% endblock %}
+            {% else %}
+                <div id="chat-screen" class="chat-unselected">
+                    <div id="chat-unselected-message">
+                        <img src="{% static 'media/chat.png' %}" alt="">
+                        <h3>Pick a chat to get started!</h3>
+                        <p>Pick a chat or click the start chat icon to connect with someone new!</p>
+                    </div>
+                </div>
+            {% endif %}
+        </section>
+        <section id="media-section">
+            {% block media_grid %}
+            {% endblock %}
+            {% block chat_members %}
+            {% endblock %}
+        </section>
+    </div>
+    <div id="settings-pop-up" class="settings pop-up">
+        <div class="pop-up-container">
+            <div class="pop-up-header-text">
+                <h3>Settings</h3>
+                <button id="close-settings" class="close-button">Close &times;</button>
+            </div>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% for field in user_form %}
+                    <div class="setting">
+                        <h5>{{ field.label }} :</h5>
+                        {{ field }}
+                    </div>
+                {% endfor %} 
+                {% for field in profile_form %}
+                    <div class="setting">
+                        <div id="change-profile-picture">
+                            <h5>{{ field.label }} :</h5>
+                            <div id="image-preview">
+                                <img src="{{ request.user.userprofile.profile_picture.url }}" alt="">
+                                {{ field }}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                <div class="pop-up-submit">
+                    <input type="submit" value="Save Changes" id="submit">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="new-chat-pop-up" class="new-chat pop-up">
+        <div class="pop-up-container">
+            <div class="pop-up-header-text">
+                <h3>New Chat</h3>
+                <button id="close-new-chat" class="close-button">Close &times;</button>
+            </div>
+            <form method="POST">
+                {% csrf_token %}
+                {% for field in new_chat_form %}
+                    {{ field }}
+                {% endfor %}
+                <div class="pop-up-submit">
+                    <input type="submit" value="Start Chat" id="submit-new-chat">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="all-images-pop-up" class="all-images pop-up">
+        <div class="pop-up-container">
+            <div class="pop-up-header-text">
+                <h3>All Images</h3>
+                <button id="close-all-images" class="close-button">Close &times;</button>
+            </div>
+            <div>
+                <div class="all-images-grid">
+                    {% if media_messages %}
+                        {% for media in media_messages %}
+                            <div class="grid-item">
+                                <img id="all-images-grid-item" src="{{ media.media.url }}" alt="">
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="large-image-pop-up" class="large-image pop-up">
+        <div class="pop-up-container">
+            <div class="pop-up-header-text">
+                <h3 id="large-image-title">Images</h3>
+                <button id="close-large-image" class="close-button">Close &times;</button>
+            </div>
+            <div>
+                <img id="large-image-element" src="" alt="">
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        setTimeout(function () { 
+          location.reload();
+        }, 60 * 800);
+    </script>
+{% endblock %}
