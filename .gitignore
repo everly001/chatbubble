@@ -4,6 +4,7 @@ lib64/
 
 # Environments
 .env
+.ebextensions
 .venv
 env/
 venv/

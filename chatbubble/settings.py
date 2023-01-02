@@ -29,9 +29,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    'chatbubble-env.eba-spu4xzyg.us-east-1.elasticbeanstalk.com/'
-]
+ALLOWED_HOSTS = []
 
 
 # Application definition
