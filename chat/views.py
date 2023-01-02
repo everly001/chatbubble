@@ -1,4 +1,3 @@
-from asyncio.windows_events import NULL
 from django.views import View
 from django.utils.decorators import method_decorator
 from django.shortcuts import render, redirect
