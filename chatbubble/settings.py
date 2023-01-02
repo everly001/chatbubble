@@ -29,7 +29,9 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'chatbubble-env.eba-spu4xzyg.us-east-1.elasticbeanstalk.com/'
+]
 
 
 # Application definition
@@ -77,7 +79,7 @@ TEMPLATES = [
 ]
 
 
-# WSGI_APPLICATION = 'chatbubble.wsgi.application'
+WSGI_APPLICATION = 'chatbubble.wsgi.application'
 
 
 # Database
@@ -89,6 +91,8 @@ DATABASES = {
         'NAME': env('DATABASE_NAME'),
         'USER': env('DATABASE_USER'),
         'PASSWORD': env('DATABASE_PASS'),
+        'HOST': env('DATABASE_HOST'),
+        'PORT': env('DATABASE_PORT'),
     }
 }
 
@@ -127,7 +131,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_URL = '/static/'
 
 MEDIA_ROOT = BASE_DIR / 'uploads'
 
