@@ -3,6 +3,7 @@ lib/
 lib64/
 
 # Environments
+settings.ini/
 .env
 .venv
 env/
@@ -18,3 +19,4 @@ uploads/
 
 # Environments
 chatbubble/.env
+chatbubble/settings.ini
