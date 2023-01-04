@@ -22,38 +22,38 @@ photo messages in real-time with other users.
 
 ## Postgres Setup
 Postgres needs to run as a service on your machine. Since I'm using windows I will show you how to do this on windows.
-<\br> <\br>
-1. Download postgres: https://www.enterprisedb.com/downloads/postgres-postgresql-downloads<\br>
-2. run the .exe file and go through the installation<\br>
-  i. remember the superuser password you use. This is very important.<\br>
-  ii. port 5432 is the standard<\br>
-3. After installation confirm the service is running by opening the "Services" window on windows.<\br>
-4. Confirm you have access to database.<\br>
-  i. open cmd prompt<\br>
-  ii. write `psql postgres postgres`<\br>
-    * means: "connect to the database named 'postgres' with the user 'postgres'". 'postgres' is the default root user name for the database.<\br>
-5. Some commands you'll find useful:<\br>
-  i. List databases<\br>
-    * `\l`<\br>
-  ii. Connect to a different database<\br>
-    * `\c databasename`<\br>
-    * Keep in mind you will not have any other databases. We will create one in a second.<\br>
-  iii. List the tables in a database.<\br>
-    * `\dt`<\br>
-  iv. create a new database for our project<\br>
-    * `CREATE DATABASE chatbubbledb;`<\br>
-  v. Create a new user that has permissions to use that database<\br>
-    * `CREATE USER django WITH PASSWORD 'password';`<\br>
-    * These credentials are important to remember because they are used in the django postgres configuration.<\br>
-  vi. List all users<\br>
-    * `/du`<\br>
-  vii. Give the new user all privileges on new db<\br>
-    * `GRANT ALL PRIVILEGES ON DATABASE chatbubbledb TO django;`<\br>
-  viii. Test<\br>
-    a. disconnect from db<\br>
-      * `\q`<\br>
-    b. Connect to the db with user<\br>
-      * `psql chatbubbledb django`<\br>
+</br> </br>
+1. Download postgres: https://www.enterprisedb.com/downloads/postgres-postgresql-downloads</br>
+2. run the .exe file and go through the installation</br>
+  i. remember the superuser password you use. This is very important.</br>
+  ii. port 5432 is the standard</br>
+3. After installation confirm the service is running by opening the "Services" window on windows.</br>
+4. Confirm you have access to database.</br>
+  i. open cmd prompt</br>
+  ii. write `psql postgres postgres`</br>
+    * means: "connect to the database named 'postgres' with the user 'postgres'". 'postgres' is the default root user name for the database.</br>
+5. Some commands you'll find useful:</br>
+  i. List databases</br>
+    * `\l`</br>
+  ii. Connect to a different database</br>
+    * `\c databasename`</br>
+    * Keep in mind you will not have any other databases. We will create one in a second.</br>
+  iii. List the tables in a database.</br>
+    * `\dt`</br>
+  iv. create a new database for our project</br>
+    * `CREATE DATABASE chatbubbledb;`</br>
+  v. Create a new user that has permissions to use that database</br>
+    * `CREATE USER django WITH PASSWORD 'password';`</br>
+    * These credentials are important to remember because they are used in the django postgres configuration.</br>
+  vi. List all users</br>
+    * `/du`</br>
+  vii. Give the new user all privileges on new db</br>
+    * `GRANT ALL PRIVILEGES ON DATABASE chatbubbledb TO django;`</br>
+  viii. Test</br>
+    a. disconnect from db</br>
+      * `\q`</br>
+    b. Connect to the db with user</br>
+      * `psql chatbubbledb django`</br>
 
 ## Creating the .env file
 
