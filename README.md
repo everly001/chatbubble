@@ -7,7 +7,12 @@ photo messages in real-time with other users.
 
 # Getting started
 
-# Installing dependencies
+## Installing pip
+https://pypi.org/project/pip/
+Open cmd prompt
+pip install pip
+
+## Installing dependencies
 
 # Postgres Setup
 
