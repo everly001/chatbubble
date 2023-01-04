@@ -35,21 +35,21 @@ Postgres needs to run as a service on your machine. Since I'm using windows I wi
 5. Some commands you'll find useful:</br>
   i. List databases</br>
     * `\l`</br>
-  ii. Connect to a different database</br>
+ ii. Connect to a different database</br>
     * `\c databasename`</br>
     * Keep in mind you will not have any other databases. We will create one in a second</br>
-  iii. List the tables in a database</br>
+ iii. List the tables in a database</br>
     * `\dt`</br>
-  iv. create a new database for our project</br>
+ iv. create a new database for our project</br>
     * `CREATE DATABASE chatbubbledb;`</br>
-  v. Create a new user that has permissions to use that database</br>
+ v. Create a new user that has permissions to use that database</br>
     * `CREATE USER django WITH PASSWORD 'password';`</br>
     * These credentials are important to remember because they are used in the django postgres configuration</br>
-  vi. List all users</br>
+ vi. List all users</br>
     * `/du`</br>
-  vii. Give the new user all privileges on new db</br>
+ vii. Give the new user all privileges on new db</br>
     * `GRANT ALL PRIVILEGES ON DATABASE chatbubbledb TO django;`</br>
-  viii. Test</br>
+ viii. Test</br>
     a. disconnect from db</br>
       * `\q`</br>
     b. Connect to the db with user</br>
