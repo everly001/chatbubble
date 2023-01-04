@@ -71,5 +71,10 @@ To generate a secret key you'll need to:</br>
 2. `python3 -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'`
 
 ## Starting Redis
+If you're on windows, you'll need to install Linux for Windows (WSL) - https://learn.microsoft.com/en-us/windows/wsl/install</br>
+1. Open Ubuntu/WSL terminal</br>
+2. `sudo service redis-server start`
 
 ## Starting your server
+1. Open cmd prompt.</br>
+2. `python manage.py runserver`
