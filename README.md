@@ -25,26 +25,26 @@ Postgres needs to run as a service on your machine. Since I'm using windows I wi
 </br> </br>
 1. Download postgres: https://www.enterprisedb.com/downloads/postgres-postgresql-downloads</br>
 2. run the .exe file and go through the installation</br>
-  i. remember the superuser password you use. This is very important.</br>
+  i. remember the superuser password you use. This is very important</br>
   ii. port 5432 is the standard</br>
-3. After installation confirm the service is running by opening the "Services" window on windows.</br>
-4. Confirm you have access to database.</br>
+3. After installation confirm the service is running by opening the "Services" window on windows</br>
+4. Confirm you have access to database</br>
   i. open cmd prompt</br>
   ii. write `psql postgres postgres`</br>
-    * means: "connect to the database named 'postgres' with the user 'postgres'". 'postgres' is the default root user name for the database.</br>
+    * means: "connect to the database named 'postgres' with the user 'postgres'". 'postgres' is the default root user name for the database</br>
 5. Some commands you'll find useful:</br>
   i. List databases</br>
     * `\l`</br>
   ii. Connect to a different database</br>
     * `\c databasename`</br>
-    * Keep in mind you will not have any other databases. We will create one in a second.</br>
-  iii. List the tables in a database.</br>
+    * Keep in mind you will not have any other databases. We will create one in a second</br>
+  iii. List the tables in a database</br>
     * `\dt`</br>
   iv. create a new database for our project</br>
     * `CREATE DATABASE chatbubbledb;`</br>
   v. Create a new user that has permissions to use that database</br>
     * `CREATE USER django WITH PASSWORD 'password';`</br>
-    * These credentials are important to remember because they are used in the django postgres configuration.</br>
+    * These credentials are important to remember because they are used in the django postgres configuration</br>
   vi. List all users</br>
     * `/du`</br>
   vii. Give the new user all privileges on new db</br>
@@ -67,7 +67,7 @@ SMTP_EMAIL=your-email
 SMTP_PASSWORD=your-email-password
 ```
 To generate a secret key you'll need to:</br>
-1. Open cmd prompt.</br>
+1. Open cmd prompt</br>
 2. `python3 -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'`
 
 ## Starting Redis
@@ -76,5 +76,5 @@ If you're on windows, you'll need to install Linux for Windows (WSL) - https://l
 2. `sudo service redis-server start`
 
 ## Starting your server
-1. Open cmd prompt.</br>
+1. Open cmd prompt</br>
 2. `python manage.py runserver`
