@@ -78,3 +78,5 @@ If you're on windows, you'll need to install Linux for Windows (WSL) - https://l
 ## Starting your server
 1. Open cmd prompt</br>
 2. `python manage.py runserver`
+
+You can now go to http://127.0.0.1:8000/ and check that the app is all up and working. Next you will need to sign up as an app user.
