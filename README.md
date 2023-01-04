@@ -8,8 +8,8 @@ photo messages in real-time with other users.
 # Getting started
 
 ## Installing pip
-https://pypi.org/project/pip/ </b>
-Open cmd prompt </b>
+https://pypi.org/project/pip/ </br>
+Open cmd prompt </br>
 pip install pip
 
 ## Installing dependencies
