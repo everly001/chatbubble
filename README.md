@@ -72,7 +72,7 @@ To generate a secret key you'll need to:</br>
 
 ## Starting Redis
 If you're on windows, you'll need to install Linux for Windows (WSL) - https://learn.microsoft.com/en-us/windows/wsl/install</br>
-1. Open Ubuntu/WSL terminal</br>
+1. Open Ubuntu/WSL terminal in VSCode</br>
 2. `sudo service redis-server start`
 
 ## Starting your server
