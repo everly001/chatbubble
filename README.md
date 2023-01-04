@@ -12,14 +12,18 @@ photo messages in real-time with other users.
 2. Open cmd prompt </br>
 3. `pip install pip`
 
+## Creating your virtual environment
+1. Open cmd prompt </br>
+2. `python -m venv env`
+
 ## Installing requirements
 1. Open cmd prompt </br>
 2. `pip install -r requirements.txt`
 
-# Postgres Setup
+## Postgres Setup
 
-# Creating the .env file
+## Creating the .env file
 
-# Starting Redis
+## Starting Redis
 
-# Starting your server
+## Starting your server
