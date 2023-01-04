@@ -12,7 +12,9 @@ photo messages in real-time with other users.
 2. Open cmd prompt </br>
 3. `pip install pip`
 
-## Installing dependencies
+## Installing requirements
+1. Open cmd prompt </br>
+2. `pip install -r requirements.txt`
 
 # Postgres Setup
 
