@@ -56,6 +56,19 @@ Postgres needs to run as a service on your machine. Since I'm using windows I wi
       * `psql chatbubbledb django`</br>
 
 ## Creating the .env file
+Next we will need to create a .env file in the same folder as our settings.py file. Your .env file should be structured like this:</br>
+```
+SECRET_KEY=your-secret-key
+DATABASE_NAME=chatbubbledb
+DATABASE_USER=django
+DATABASE_PASS=password
+
+SMTP_EMAIL=your-email
+SMTP_PASSWORD=your-email-password
+```
+To generate a secret key you'll need to:</br>
+1. Open cmd prompt.</br>
+2. `python3 -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'`
 
 ## Starting Redis
 
